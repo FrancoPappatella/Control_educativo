@@ -1,5 +1,7 @@
 package com.edu.alumnosGestion.dto;
 
+import com.edu.alumnosGestion.bo.Alumno;
+
 public class AlumnoDTO {
 	private int legajo;
 	private String nombre;
@@ -14,6 +16,13 @@ public class AlumnoDTO {
 		this.apellido = apellido;
 		this.edad = edad;
 		this.activo = activo;
+	}
+	public AlumnoDTO(Alumno a) {
+		this.legajo = a.getLegajo();
+		this.nombre = a.getNombre();
+		this.apellido = a.getApellido();
+		this.edad = a.getEdad();
+		this.activo = a.isActivo();	
 	}
 	public int getLegajo() {
 		return legajo;

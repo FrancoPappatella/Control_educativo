@@ -10,15 +10,13 @@ import com.edu.alumnosGestion.repository.AlumnoRepository;
 
 @Service
 public class AlumnoServiceImpl implements AlumnoService {
-	
+
 	@Autowired
 	AlumnoRepository alumnoRepository;
 
 	@Override
 	public void altaAlumno(Alumno a) {
-		// TODO Auto-generated method stub
 		alumnoRepository.altaAlumno(a);
-		
 	}
 
 	@Override

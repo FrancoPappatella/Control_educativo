@@ -1,26 +1,26 @@
-package com.edu.alumnosGestion.bo;
+package com.edu.alumnosGestion.dto;
 
-import java.util.Objects;
+import com.edu.alumnosGestion.bo.Profesor;
 
-public class Asignatura {
+public class AsignaturaDTO {
 	private int idAsignatura;
 	private Profesor profesor;
 	private String despcripcion;
 
-	public Asignatura(int idAsignatura) {
+	public AsignaturaDTO(int idAsignatura) {
 		this.idAsignatura = idAsignatura;
 	}
 
-	public Asignatura(int idAsignatura, Profesor profesor) {
+	public AsignaturaDTO(int idAsignatura, Profesor profesor) {
 		this.idAsignatura = idAsignatura;
 		this.profesor = profesor;
 	}
 
-	public Asignatura(Profesor profesor) {
+	public AsignaturaDTO(Profesor profesor) {
 		this.profesor = profesor;
 	}
 
-	public Asignatura(int idAsignatura, Profesor profesor, String despcripcion) {
+	public AsignaturaDTO(int idAsignatura, Profesor profesor, String despcripcion) {
 		this.idAsignatura = idAsignatura;
 		this.profesor = profesor;
 		this.despcripcion = despcripcion;
@@ -57,28 +57,4 @@ public class Asignatura {
 	public void setDespcripcion(String despcripcion) {
 		this.despcripcion = despcripcion;
 	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(idAsignatura);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Asignatura other = (Asignatura) obj;
-		return idAsignatura == other.idAsignatura;
-	}
-
-	@Override
-	public String toString() {
-		return "Asignatura [idAsignatura=" + idAsignatura + ", profesor=" + profesor + ", despcripcion=" + despcripcion
-				+ "]";
-	}
-
 }
