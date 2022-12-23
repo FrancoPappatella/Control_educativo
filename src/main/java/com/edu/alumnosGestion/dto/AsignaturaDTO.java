@@ -1,5 +1,6 @@
 package com.edu.alumnosGestion.dto;
 
+import com.edu.alumnosGestion.bo.Asignatura;
 import com.edu.alumnosGestion.bo.Profesor;
 
 public class AsignaturaDTO {
@@ -25,7 +26,11 @@ public class AsignaturaDTO {
 		this.profesor = profesor;
 		this.despcripcion = despcripcion;
 	}
-
+	public AsignaturaDTO(Asignatura asignatura) {
+		this.idAsignatura = asignatura.getIdAsignatura();
+		this.profesor = asignatura.getProfesor();
+		this.despcripcion = asignatura.getDespcripcion();
+	}
 	public int getIdAsignatura() {
 		return idAsignatura;
 	}

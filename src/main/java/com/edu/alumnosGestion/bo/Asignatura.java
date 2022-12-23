@@ -7,6 +7,10 @@ public class Asignatura {
 	private Profesor profesor;
 	private String despcripcion;
 
+	public Asignatura() {
+		
+	}
+	
 	public Asignatura(int idAsignatura) {
 		this.idAsignatura = idAsignatura;
 	}
