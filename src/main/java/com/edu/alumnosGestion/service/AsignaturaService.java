@@ -2,6 +2,8 @@ package com.edu.alumnosGestion.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.edu.alumnosGestion.bo.Alumno;
 import com.edu.alumnosGestion.bo.Asignatura;
 

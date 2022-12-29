@@ -2,8 +2,9 @@ package com.edu.alumnosGestion.service;
 
 import java.util.List;
 
-import com.edu.alumnosGestion.bo.Alumno;
+import org.springframework.stereotype.Service;
 
+import com.edu.alumnosGestion.bo.Alumno;
 
 public interface AlumnoService {
 	public void altaAlumno(Alumno a);

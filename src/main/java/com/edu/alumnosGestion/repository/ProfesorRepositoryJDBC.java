@@ -18,30 +18,30 @@ public class ProfesorRepositoryJDBC implements ProfesorRepository {
 
 	@Override
 	public void altaProfesor(Profesor profesor) {
-		final String SQL_INSERT = "INSERT INTO profesor(id_profesor, nombre, apellido) VALUES(?,?,?)";
-		jdbcTemplate.update(SQL_INSERT, profesor.getIdProfesor(), profesor.getNombre(), profesor.getNombre());
+		final String SQL_INSERT = "INSERT INTO profesor(idProfesor, nombre, apellido) VALUES(?,?,?)";
+		jdbcTemplate.update(SQL_INSERT, profesor.getIdProfesor(), profesor.getNombre(), profesor.getApellido());
 	}
 
 	@Override
 	public List<Profesor> listarProfesores() {
-		final String SQL_SELECT_ALL = "SELECT id_profesor, nombre, apellido FROM profesor";
+		final String SQL_SELECT_ALL = "SELECT idProfesor, nombre, apellido FROM profesor";
 		return jdbcTemplate.query(SQL_SELECT_ALL, new RowMapper<Profesor>() {
 
 			@Override
 			public Profesor mapRow(ResultSet rs, int rowNum) throws SQLException {
-				return new Profesor(rs.getInt("id_profesor"), rs.getString("nombre"), rs.getString("apellido"));
+				return new Profesor(rs.getInt("idProfesor"), rs.getString("nombre"), rs.getString("apellido"));
 			}
 		});
 	}
 
 	@Override
 	public Profesor obtnerPorId(int id) {
-		final String SQL_SELECT_BY_ID = "SELECT id_profesor, nombre, apellido FROM profesor WHERE id_profesor=?";
+		final String SQL_SELECT_BY_ID = "SELECT idProfesor, nombre, apellido FROM profesor WHERE id_profesor=?";
 		return jdbcTemplate.queryForObject(SQL_SELECT_BY_ID, new RowMapper<Profesor>() {
 
 			@Override
 			public Profesor mapRow(ResultSet rs, int rowNum) throws SQLException {
-				return new Profesor(rs.getInt("id_profesor"), rs.getString("nombre"), rs.getString("apellido"));
+				return new Profesor(rs.getInt("idProfesor"), rs.getString("nombre"), rs.getString("apellido"));
 			}
 
 		}, id);
@@ -50,13 +50,13 @@ public class ProfesorRepositoryJDBC implements ProfesorRepository {
 
 	@Override
 	public void eliminarProfesor(int id) {
-		final String SQL_DELETE = "DELETE FROM profesor WHERE id_profesor=?";
+		final String SQL_DELETE = "DELETE FROM profesor WHERE idProfesor=?";
 		jdbcTemplate.update(SQL_DELETE, id);
 	}
 
 	@Override
 	public void modificarProfesor(Profesor profesor, int id) {
-		final String SQL_UPDATE = "UPDATE profesor SET nombre=?, apellido=? WHERE id_profesor=?";
+		final String SQL_UPDATE = "UPDATE profesor SET nombre=?, apellido=? WHERE idProfesor=?";
 		jdbcTemplate.update(SQL_UPDATE, profesor.getNombre(), profesor.getApellido(), id);
 	}
 

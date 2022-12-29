@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Asignatura {
 	private int idAsignatura;
 	private Profesor profesor;
-	private String despcripcion;
+	private String descripcion;
 
 	public Asignatura() {
 		
@@ -14,7 +14,12 @@ public class Asignatura {
 	public Asignatura(int idAsignatura) {
 		this.idAsignatura = idAsignatura;
 	}
-
+	
+	public Asignatura(String descripcion, Profesor profesor) {
+		this.descripcion = descripcion;
+		this.profesor = profesor;
+	}
+	
 	public Asignatura(int idAsignatura, Profesor profesor) {
 		this.idAsignatura = idAsignatura;
 		this.profesor = profesor;
@@ -27,7 +32,7 @@ public class Asignatura {
 	public Asignatura(int idAsignatura, Profesor profesor, String despcripcion) {
 		this.idAsignatura = idAsignatura;
 		this.profesor = profesor;
-		this.despcripcion = despcripcion;
+		this.descripcion = despcripcion;
 	}
 
 	public int getIdAsignatura() {
@@ -38,16 +43,16 @@ public class Asignatura {
 		this.idAsignatura = idAsignatura;
 	}
 
-	public Profesor getIdProfesor() {
-		return profesor;
+	public int getIdProfesor() {
+		return profesor.getIdProfesor();
 	}
 
 	public void setIdProfesor(Profesor profesor) {
-		this.profesor = profesor;
+		this.profesor.setIdProfesor(profesor.getIdProfesor());
 	}
 
-	public String getDespcripcion() {
-		return despcripcion;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
 	public Profesor getProfesor() {
@@ -58,8 +63,8 @@ public class Asignatura {
 		this.profesor = profesor;
 	}
 
-	public void setDespcripcion(String despcripcion) {
-		this.despcripcion = despcripcion;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	@Override
@@ -81,7 +86,7 @@ public class Asignatura {
 
 	@Override
 	public String toString() {
-		return "Asignatura [idAsignatura=" + idAsignatura + ", profesor=" + profesor + ", despcripcion=" + despcripcion
+		return "Asignatura [idAsignatura=" + idAsignatura + ", profesor=" + profesor + ", descripcion=" + descripcion
 				+ "]";
 	}
 

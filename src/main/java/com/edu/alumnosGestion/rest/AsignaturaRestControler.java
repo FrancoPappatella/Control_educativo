@@ -6,6 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.web.bind.annotation.*;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.edu.alumnosGestion.AlumnosGestionApplication;
 import com.edu.alumnosGestion.bo.Asignatura;
 import com.edu.alumnosGestion.dto.AsignaturaDTO;
 import com.edu.alumnosGestion.service.AsignaturaService;
@@ -14,14 +18,18 @@ import com.edu.alumnosGestion.service.AsignaturaService;
 @RequestMapping("/gestion/asignaturas")
 public class AsignaturaRestControler {
 
+	Logger logger = LoggerFactory.getLogger(AlumnosGestionApplication.class);
+	
 	@Autowired
-	AsignaturaService asignaturaService;
+	private AsignaturaService asignaturaService;
 
 	@PostMapping("/alta")
 	public void altaAsignatura(@RequestBody AsignaturaDTO asignaturaDTO) {
+
 		Asignatura asignatura = new Asignatura();
+		logger.info("------DESCRIPCION: "+ asignaturaDTO.getDespcripcion()+ "------------");
 		asignatura.setIdAsignatura(asignaturaDTO.getIdAsignatura());
-		asignatura.setDespcripcion(asignaturaDTO.getDespcripcion());
+		asignatura.setDescripcion(asignaturaDTO.getDespcripcion());
 		asignatura.setProfesor(asignaturaDTO.getProfesor());
 
 		asignaturaService.altaAsignatura(asignatura);
@@ -47,14 +55,14 @@ public class AsignaturaRestControler {
 	public void modificarAsignatura(@PathVariable(name = "id") int id, @RequestBody AsignaturaDTO asignaturaDTO) {
 		Asignatura asignatura = new Asignatura();
 		asignatura.setIdAsignatura(asignaturaDTO.getIdAsignatura());
-		asignatura.setDespcripcion(asignaturaDTO.getDespcripcion());
+		asignatura.setDescripcion(asignaturaDTO.getDespcripcion());
 		asignatura.setProfesor(asignaturaDTO.getProfesor());
 		asignaturaService.modificarAsignatura(asignatura, id);
 	}
-	
+
 	@DeleteMapping("/eliminar/{id}")
 	public void eliminarAsignatura(@PathVariable(name = "id") int id, @RequestBody AsignaturaDTO asignaturaDTO) {
 		asignaturaService.eliminarAsignatura(id);
 	}
-	
+
 }
