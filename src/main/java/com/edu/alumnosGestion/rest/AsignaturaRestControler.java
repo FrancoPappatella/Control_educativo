@@ -27,9 +27,9 @@ public class AsignaturaRestControler {
 	public void altaAsignatura(@RequestBody AsignaturaDTO asignaturaDTO) {
 
 		Asignatura asignatura = new Asignatura();
-		logger.info("------DESCRIPCION: "+ asignaturaDTO.getDespcripcion()+ "------------");
+		logger.info("------DESCRIPCION: "+ asignaturaDTO.getDescripcion()+ "------------");
 		asignatura.setIdAsignatura(asignaturaDTO.getIdAsignatura());
-		asignatura.setDescripcion(asignaturaDTO.getDespcripcion());
+		asignatura.setDescripcion(asignaturaDTO.getDescripcion());
 		asignatura.setProfesor(asignaturaDTO.getProfesor());
 
 		asignaturaService.altaAsignatura(asignatura);
@@ -55,7 +55,7 @@ public class AsignaturaRestControler {
 	public void modificarAsignatura(@PathVariable(name = "id") int id, @RequestBody AsignaturaDTO asignaturaDTO) {
 		Asignatura asignatura = new Asignatura();
 		asignatura.setIdAsignatura(asignaturaDTO.getIdAsignatura());
-		asignatura.setDescripcion(asignaturaDTO.getDespcripcion());
+		asignatura.setDescripcion(asignaturaDTO.getDescripcion());
 		asignatura.setProfesor(asignaturaDTO.getProfesor());
 		asignaturaService.modificarAsignatura(asignatura, id);
 	}

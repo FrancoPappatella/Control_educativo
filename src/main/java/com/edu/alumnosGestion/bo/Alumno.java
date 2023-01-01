@@ -1,6 +1,11 @@
 package com.edu.alumnosGestion.bo;
 
-import java.util.Objects;
+import javax.persistence.ManyToMany;
+
+import org.hibernate.annotations.*;
+import org.springframework.data.annotation.*;
+
+import java.util.*;
 
 public class Alumno {
 	private int legajo;
@@ -8,6 +13,7 @@ public class Alumno {
 	private String apellido;
 	private int edad;
 	private boolean activo;
+	private List<Asignatura> asignaturas;
 
 	public Alumno() {
 
@@ -30,6 +36,16 @@ public class Alumno {
 		this.apellido = apellido;
 		this.edad = edad;
 		this.activo = activo;
+	}
+
+	public Alumno(int legajo, String nombre, String apellido, int edad, boolean activo,
+			List<Asignatura> asignaturas) {
+		this.legajo = legajo;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.edad = edad;
+		this.activo = activo;
+		this.asignaturas = asignaturas;
 	}
 
 	public int getLegajo() {
@@ -70,6 +86,14 @@ public class Alumno {
 
 	public void setActivo(boolean activo) {
 		this.activo = activo;
+	}
+
+	public List<Asignatura> getAsignaturas() {
+		return asignaturas;
+	}
+
+	public void setAsignaturas(List<Asignatura> asignaturas) {
+		this.asignaturas = asignaturas;
 	}
 
 	@Override

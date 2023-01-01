@@ -1,25 +1,29 @@
 package com.edu.alumnosGestion.bo;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class Asignatura {
 	private int idAsignatura;
 	private Profesor profesor;
 	private String descripcion;
+	private List<Alumno> alumnos;
 
 	public Asignatura() {
-		
+
 	}
-	
+
 	public Asignatura(int idAsignatura) {
 		this.idAsignatura = idAsignatura;
 	}
-	
+
 	public Asignatura(String descripcion, Profesor profesor) {
 		this.descripcion = descripcion;
 		this.profesor = profesor;
 	}
-	
+
 	public Asignatura(int idAsignatura, Profesor profesor) {
 		this.idAsignatura = idAsignatura;
 		this.profesor = profesor;
@@ -33,6 +37,13 @@ public class Asignatura {
 		this.idAsignatura = idAsignatura;
 		this.profesor = profesor;
 		this.descripcion = despcripcion;
+	}
+
+	public Asignatura(int idAsignatura, Profesor profesor, String descripcion, List<Alumno> alumnos) {
+		this.idAsignatura = idAsignatura;
+		this.profesor = profesor;
+		this.descripcion = descripcion;
+		this.alumnos = alumnos;
 	}
 
 	public int getIdAsignatura() {
@@ -65,6 +76,14 @@ public class Asignatura {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public List<Alumno> getAlumnos() {
+		return alumnos;
+	}
+
+	public void setAlumnos(List<Alumno> alumnos) {
+		this.alumnos = alumnos;
 	}
 
 	@Override
