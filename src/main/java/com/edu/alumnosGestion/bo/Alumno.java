@@ -13,7 +13,7 @@ public class Alumno {
 	private String apellido;
 	private int edad;
 	private boolean activo;
-	private List<Asignatura> asignaturas;
+	private List<Asignatura> asignaturas = new ArrayList<>();
 
 	public Alumno() {
 
@@ -117,6 +117,14 @@ public class Alumno {
 	public String toString() {
 		return "Alumno [legajo=" + legajo + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad
 				+ ", activo=" + activo + "]";
+	}
+	
+	public static Alumno combinar(Alumno a1, Alumno a2) {
+		Alumno alumnoFinal = new Alumno(a1.legajo, a1.nombre, a1.apellido,a1.edad,a1.activo);
+		alumnoFinal.asignaturas.add(a1.getAsignaturas().get(0));
+		alumnoFinal.asignaturas.add(a2.getAsignaturas().get(0));
+		return alumnoFinal;
+		
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.edu.alumnosGestion.dto;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -13,7 +14,7 @@ public class AlumnoDTO {
 	private String apellido;
 	private int edad;
 	private boolean activo;
-	private List<Asignatura> asignaturas;
+	private List<Asignatura> asignaturas = new ArrayList<>();
 
 	public AlumnoDTO() {
 	}
@@ -42,6 +43,7 @@ public class AlumnoDTO {
 		this.apellido = a.getApellido();
 		this.edad = a.getEdad();
 		this.activo = a.isActivo();
+		this.asignaturas = a.getAsignaturas();
 	}
 
 	public int getLegajo() {

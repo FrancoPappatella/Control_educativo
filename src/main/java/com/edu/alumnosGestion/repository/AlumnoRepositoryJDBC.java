@@ -14,6 +14,8 @@ import org.springframework.stereotype.Repository;
 
 import com.edu.alumnosGestion.AlumnosGestionApplication;
 import com.edu.alumnosGestion.bo.Alumno;
+import com.edu.alumnosGestion.bo.Asignatura;
+import com.edu.alumnosGestion.bo.Profesor;
 
 @Repository
 public class AlumnoRepositoryJDBC implements AlumnoRepository {
@@ -31,12 +33,17 @@ public class AlumnoRepositoryJDBC implements AlumnoRepository {
 
 	@Override
 	public List<Alumno> listarAlumnos() {
-		final String SQL_SELECT_ALL = "SELECT legajo, nombre, apellido, edad, activo FROM alumno";
+		final String SQL_SELECT_ALL = "SELECT alumno.legajo, alumno.nombre, alumno.apellido, alumno.edad, alumno.activo, asignatura.idAsignatura, asignatura.descripcion, asignatura.idProfesor FROM alumno LEFT JOIN alumno_asignatura ON alumno.legajo = alumno_asignatura.idAlumno LEFT JOIN asignatura ON alumno_asignatura.idAsignatura = asignatura.idAsignatura ";
 		return jdbcTemplate.query(SQL_SELECT_ALL, new RowMapper<Alumno>() {
 			@Override
 			public Alumno mapRow(ResultSet rs, int rowNum) throws SQLException {
+				List<Asignatura> lista = new ArrayList<>();
+				lista.add(new Asignatura(rs.getInt("idAsignatura"), new Profesor(rs.getInt("idProfesor")), rs.getString("descripcion")));
+				logger.info("--------------------------------------------------------------------------------------------------------------------------------");
+				logger.info(lista.get(0).toString());
+				logger.info("--------------------------------------------------------------------------------------------------------------------------------");
 				return new Alumno(rs.getInt("legajo"), rs.getString("nombre"), rs.getString("apellido"),
-						rs.getInt("edad"), rs.getBoolean("activo"));
+						rs.getInt("edad"), rs.getBoolean("activo"), lista);
 			}
 		});
 
