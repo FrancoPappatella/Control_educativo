@@ -38,8 +38,7 @@ public class Alumno {
 		this.activo = activo;
 	}
 
-	public Alumno(int legajo, String nombre, String apellido, int edad, boolean activo,
-			List<Asignatura> asignaturas) {
+	public Alumno(int legajo, String nombre, String apellido, int edad, boolean activo, List<Asignatura> asignaturas) {
 		this.legajo = legajo;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -118,13 +117,36 @@ public class Alumno {
 		return "Alumno [legajo=" + legajo + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad
 				+ ", activo=" + activo + "]";
 	}
-	
-	public static Alumno combinar(Alumno a1, Alumno a2) {
-		Alumno alumnoFinal = new Alumno(a1.legajo, a1.nombre, a1.apellido,a1.edad,a1.activo);
-		alumnoFinal.asignaturas.add(a1.getAsignaturas().get(0));
-		alumnoFinal.asignaturas.add(a2.getAsignaturas().get(0));
-		return alumnoFinal;
-		
+
+	public static List<Alumno> Formatear(List<Alumno> alumnos) {
+		List<Alumno> repetidos = new ArrayList<>();
+		List<Alumno> noRepetidos = new ArrayList<>();
+		List<Alumno> listaFinal = new ArrayList<>();
+		Object[] alumnosArray = alumnos.toArray();
+		int legajo = 0;
+		int i = 0;
+		for (Object o : alumnosArray) {
+			Alumno alumno = (Alumno) o;
+			if (alumno.getLegajo() == legajo) {
+				repetidos.add(alumno);
+			} else {
+				noRepetidos.add(alumno);
+			}
+			legajo = alumno.getLegajo();
+			i++;
+		}
+
+		for (Alumno aux1 : noRepetidos) {
+
+			for (Alumno aux2 : repetidos) {
+				if (aux1.getLegajo() == aux2.getLegajo()) {
+					aux1.getAsignaturas().addAll(aux2.getAsignaturas());
+				}
+			}
+
+			listaFinal.add(aux1);
+		}
+		return listaFinal;
 	}
 
 }

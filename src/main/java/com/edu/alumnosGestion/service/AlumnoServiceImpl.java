@@ -29,36 +29,7 @@ public class AlumnoServiceImpl implements AlumnoService {
 	@Override
 	public List<Alumno> listarAlumnos() {
 		List<Alumno> alumnos = alumnoRepository.listarAlumnos();
-		List<Alumno> repetidos = new ArrayList<>();
-		List<Alumno> noRepetidos = new ArrayList<>();
-		List<Alumno> listaFinal = new ArrayList<>();
-		Object[] alumnosArray = alumnos.toArray();
-		int legajo = 0;
-		int i = 0;
-		for (Object o : alumnosArray) {
-			Alumno alumno = (Alumno) o;
-			logger.info(
-					"---------------------------ALUMNO:" + alumno.getApellido() + "-------------------------------");
-			if (alumno.getLegajo() == legajo) {
-				repetidos.add(alumno);
-			} else {
-				noRepetidos.add(alumno);
-			}
-			legajo = alumno.getLegajo();
-			// List<Asignatura> asignaturasAux = alumno.getAsignaturas();
-			i++;
-		}
-		
-		for(Alumno aux1 : noRepetidos) {
-			
-			for(Alumno aux2 : repetidos) {
-				if(aux1.getLegajo() == aux2.getLegajo()) {
-					aux1.getAsignaturas().addAll(aux2.getAsignaturas());
-				}
-			}
-			
-			listaFinal.add(aux1);
-		}
+		List<Alumno> listaFinal = Alumno.Formatear(alumnos);
 		return listaFinal;
 	}
 

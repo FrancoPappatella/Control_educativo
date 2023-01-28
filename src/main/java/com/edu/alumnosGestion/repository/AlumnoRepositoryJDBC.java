@@ -39,9 +39,6 @@ public class AlumnoRepositoryJDBC implements AlumnoRepository {
 			public Alumno mapRow(ResultSet rs, int rowNum) throws SQLException {
 				List<Asignatura> lista = new ArrayList<>();
 				lista.add(new Asignatura(rs.getInt("idAsignatura"), new Profesor(rs.getInt("idProfesor")), rs.getString("descripcion")));
-				logger.info("--------------------------------------------------------------------------------------------------------------------------------");
-				logger.info(lista.get(0).toString());
-				logger.info("--------------------------------------------------------------------------------------------------------------------------------");
 				return new Alumno(rs.getInt("legajo"), rs.getString("nombre"), rs.getString("apellido"),
 						rs.getInt("edad"), rs.getBoolean("activo"), lista);
 			}
