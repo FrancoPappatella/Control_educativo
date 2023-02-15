@@ -61,7 +61,7 @@ public class AsignaturaRestControler {
 	}
 
 	@DeleteMapping("/eliminar/{id}")
-	public void eliminarAsignatura(@PathVariable(name = "id") int id, @RequestBody AsignaturaDTO asignaturaDTO) {
+	public void eliminarAsignatura(@PathVariable(name = "id") int id) {
 		asignaturaService.eliminarAsignatura(id);
 	}
 
